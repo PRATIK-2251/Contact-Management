@@ -9,7 +9,12 @@ const getContact = (request, response) => {
 //@route POST /api/contacts
 //@access pulic
 const createContact = (request, response) => {
-  console.log("Create API ---=> ", request);
+  const { name, email, phone } = request.body;
+  if (!name || !email || !phone) {
+    response.status(400);
+    throw new Error("All fields are mandatory");
+    // response.status(400).send({ message: "All field are required" });
+  }
   response.status(201).send({ message: "Contact created", data: request.body });
 };
 
