@@ -1,32 +1,38 @@
 const express = require("express");
+const {
+  getContact,
+  createContact,
+  getSingleContact,
+  updateContact,
+  deleteContact,
+} = require("../controllers/contactController");
 const router = express.Router();
 
-// GET all contact
-router.route("/").get((request, response) => {
-  response.status(200).send({ message: "Gel all contacts" });
-});
+// Optimize way
+// GET all contact and POST contact
+router.route("/").get(getContact).post(createContact);
 
 // GET single contact
-router.route("/:id").get((request, response) => {
-  response
-    .status(200)
-    .send({ message: `Single contact is get ${request.params.id}` });
-});
+router
+  .route("/:id")
+  .get(getSingleContact)
+  .put(updateContact)
+  .delete(deleteContact);
 
-router.route("/").post((request, response) => {
-  response.status(201).send({ message: "Created contact" });
-});
+// Regular Way
+// // GET all contact
+// router.route("/").get(getContact);
 
-router.route("/:id").put((request, response) => {
-  response
-    .status(200)
-    .send({ message: `Update contact of id is  ${request.params.id}` });
-});
+// // GET single contact
+// router.route("/:id").get(getSingleContact);
 
-router.route("/:id").delete((request, response) => {
-  response
-    .status(200)
-    .send({ message: `Deleted contact is ${request.params.id}` });
-});
+// //POST
+// router.route("/").post(createContact);
+
+// // PUT
+// router.route("/:id").put(updateContact);
+
+// // DELETE
+// router.route("/:id").delete(deleteContact);
 
 module.exports = router;
