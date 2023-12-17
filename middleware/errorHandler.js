@@ -36,6 +36,11 @@ const errorHandler = (error, request, response, next) => {
       });
     default:
       console.log("No error, all good");
+      response.json({
+        title: "Default error",
+        message: error.message,
+        stackTrace: error.stack,
+      });
       break;
   }
 };
