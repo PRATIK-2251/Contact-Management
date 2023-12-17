@@ -57,12 +57,10 @@ const updateContact = asyncHandler(async (request, response) => {
     new: true,
   });
 
-  response
-    .status(200)
-    .send({
-      message: `Update contact of id is  ${request.params.id}`,
-      data: updateContact,
-    });
+  response.status(200).send({
+    message: `Update contact of id is  ${request.params.id}`,
+    data: updateContact,
+  });
 });
 
 //@desc Delete contact

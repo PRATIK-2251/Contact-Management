@@ -13,6 +13,8 @@ app.get("/", (request, response) => {
 });
 
 app.use("/api/contacts", require("./routes/contactRoutes"));
+app.use("/api/users", require("./routes/userRoutes"));
+
 app.use(errorHandler);
 
 app.listen(PORT, () => {
