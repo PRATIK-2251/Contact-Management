@@ -6,7 +6,7 @@ const Contact = require("../models/contact");
 //@access pulic
 const getContact = asyncHandler(async (request, response) => {
   const contactList = await Contact.find({});
-  console.log("Contact List --> ", contactList);
+  // console.log("Contact List --> ", contactList);
   response.status(200).send({ message: "Get all contacts", data: contactList });
 });
 
@@ -44,7 +44,7 @@ const getSingleContact = asyncHandler(async (request, response) => {
 //@route PUT /api/contacts/:id
 //@access pulic
 const updateContact = asyncHandler(async (request, response) => {
-  console.log("Update API --> ", request.body);
+  // console.log("Update API --> ", request.body);
 
   const { id } = request.params;
   const contactDetails = await Contact.findById(id);
