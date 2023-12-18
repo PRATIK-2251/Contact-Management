@@ -6,7 +6,10 @@ const {
   updateContact,
   deleteContact,
 } = require("../controllers/contactController");
+const validateToken = require("../middleware/vailidateTokenHandler");
 const router = express.Router();
+
+router.use(validateToken);
 
 // Optimize way
 // GET all contact and POST contact
